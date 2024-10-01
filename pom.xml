@@ -19,6 +19,7 @@
     <modules>
         <module>common</module>
         <module>gateway</module>
+        <module>reservation</module>
     </modules>
 
     <properties>
@@ -55,6 +56,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.36.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.codemonstur</groupId>
+            <artifactId>embedded-redis</artifactId>
+            <version>1.4.2</version>
+<!--            <scope>test</scope>-->
         </dependency>
     </dependencies>
 
