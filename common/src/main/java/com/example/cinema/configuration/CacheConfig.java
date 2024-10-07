@@ -48,4 +48,11 @@ public class CacheConfig {
         template.setConnectionFactory(connectionFactory());
         return template;
     }
+
+    @Bean
+    public RedisTemplate<String, String> stringTemplate() {
+        RedisTemplate<String, String> template = new RedisTemplate<>();
+        template.setConnectionFactory(connectionFactory());
+        return template;
+    }
 }
