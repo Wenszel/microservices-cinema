@@ -1,10 +1,9 @@
-package org.example;
+package org.example.token;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
-import java.util.Optional;
 
 @Component
 public class TokenCache {
@@ -21,8 +20,7 @@ public class TokenCache {
         template.expire(TOKEN_KEY, expiration);
     }
 
-    public Optional<String> getToken() {
-        return Optional.ofNullable(template.opsForValue().get(TOKEN_KEY));
+    public String getToken() {
+        return template.opsForValue().get(TOKEN_KEY);
     }
-
 }
