@@ -1,4 +1,4 @@
-package org.example.token;
+package com.example.token;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;

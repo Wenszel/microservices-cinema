@@ -1,8 +1,9 @@
-package org.example.service;
+package com.example.service;
 
 import com.example.cinema.dto.request.PaymentRequest;
 import com.example.cinema.exception.payment.AccessTokenRetrievalException;
-import org.example.paymentclient.PaymentApiClient;
+import com.example.cinema.exception.payment.OrderRequestException;
+import com.example.paymentclient.PaymentApiClient;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,7 @@ public class PaymentService {
         this.paymentApiClient = paymentApiClient;
     }
 
-    public String pay(PaymentRequest request) throws AccessTokenRetrievalException {
+    public String pay(PaymentRequest request) throws AccessTokenRetrievalException, OrderRequestException {
         return paymentApiClient.pay(request);
     }
 }

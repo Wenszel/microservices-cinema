@@ -38,21 +38,14 @@ public class CacheConfig {
     }
 
     @Bean
-    public RedisConnectionFactory connectionFactory() {
+    public RedisConnectionFactory redisConnectionFactory() {
         return new LettuceConnectionFactory();
     }
 
     @Bean
     public RedisTemplate<String, Set<String>> template() {
         RedisTemplate<String, Set<String>> template = new RedisTemplate<>();
-        template.setConnectionFactory(connectionFactory());
-        return template;
-    }
-
-    @Bean
-    public RedisTemplate<String, String> stringTemplate() {
-        RedisTemplate<String, String> template = new RedisTemplate<>();
-        template.setConnectionFactory(connectionFactory());
+        template.setConnectionFactory(redisConnectionFactory());
         return template;
     }
 }

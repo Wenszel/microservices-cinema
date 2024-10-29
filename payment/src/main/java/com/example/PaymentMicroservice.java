@@ -1,12 +1,13 @@
-package org.example;
+package com.example;
 
 import com.example.cinema.dto.request.PaymentRequest;
 import com.example.cinema.exception.payment.AccessTokenRetrievalException;
+import com.example.cinema.exception.payment.OrderRequestException;
 import com.example.cinema.rabbitmq.RabbitMqClientData;
 import com.example.cinema.rabbitmq.RabbitMqMessageHandler;
+import com.example.service.PaymentService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.service.PaymentService;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.boot.SpringApplication;
@@ -34,7 +35,7 @@ public class PaymentMicroservice {
     }
 
     @RabbitListener(queues = PAYMENT_QUEUE)
-    public void listen(Message message) throws JsonProcessingException, AccessTokenRetrievalException {
+    public void listen(Message message) throws JsonProcessingException, AccessTokenRetrievalException, OrderRequestException {
         String messageBody = new String(message.getBody());
         PaymentRequest paymentRequest = new ObjectMapper().readValue(messageBody, PaymentRequest.class);
         String redirectionUri = paymentService.pay(paymentRequest);

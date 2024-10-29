@@ -1,4 +1,4 @@
-package com.example.cinema.dto;
+package com.example.cinema.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

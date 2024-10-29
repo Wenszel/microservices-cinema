@@ -1,7 +1,6 @@
 package com.example.cinema.controller;
 
-import com.example.cinema.dto.ReservationRequest;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.example.cinema.dto.request.ReservationRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

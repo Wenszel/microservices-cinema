@@ -1,22 +1,17 @@
 package com.example.cinema;
 
-import com.example.cinema.dto.ReservationRequest;
+import com.example.cinema.dto.request.ReservationRequest;
 import com.example.cinema.exception.reservation.TicketReservationException;
 import com.example.cinema.rabbitmq.RabbitMqClientData;
 import com.example.cinema.rabbitmq.RabbitMqMessageHandler;
 import com.example.cinema.service.ReservationService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageProperties;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import redis.embedded.RedisServer;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -24,20 +19,17 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.example.cinema.rabbitmq.RabbitMqQueues.RESERVATION_QUEUE;
+import static com.example.cinema.rabbitmq.RabbitMqConfig.RESERVATION_QUEUE;
 
 @SpringBootApplication
 public class ReservationMicroservice {
     private final ReservationService reservationService;
-    private final RabbitTemplate rabbitTemplate;
     private final RabbitMqMessageHandler rabbitMqMessageHandler;
 
     @Autowired
     public ReservationMicroservice(ReservationService reservationService,
-                                    RabbitTemplate rabbitTemplate,
                                     RabbitMqMessageHandler rabbitMqMessageHandler) {
         this.reservationService = reservationService;
-        this.rabbitTemplate = rabbitTemplate;
         this.rabbitMqMessageHandler = rabbitMqMessageHandler;
     }
 

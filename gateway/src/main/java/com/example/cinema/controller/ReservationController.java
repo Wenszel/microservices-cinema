@@ -1,6 +1,6 @@
 package com.example.cinema.controller;
 
-import com.example.cinema.dto.ReservationRequest;
+import com.example.cinema.dto.request.ReservationRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.nio.charset.StandardCharsets;
 
-import static com.example.cinema.rabbitmq.RabbitMqQueues.*;
+import static com.example.cinema.rabbitmq.RabbitMqConfig.RESERVATION_EXCHANGE;
+import static com.example.cinema.rabbitmq.RabbitMqConfig.RESERVATION_ROUTING_KEY;
 
 @RestController
 public class ReservationController {
