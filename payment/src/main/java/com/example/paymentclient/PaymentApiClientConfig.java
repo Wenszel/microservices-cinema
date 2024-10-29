@@ -21,9 +21,11 @@ public class PaymentApiClientConfig {
     private String clientId;
     @Value("${payment.payu.secret}")
     private String clientSecret;
+    @Value("${payment.payu.merchantposid}")
+    private String merchantPosId;
 
     @Bean
     public PaymentApiClient paymentApiClient() {
-        return new PayUClient(tokenCache, payUHttpClient, clientId, clientSecret, payUResponseParser);
+        return new PayUClient(tokenCache, payUHttpClient, clientId, clientSecret, merchantPosId, payUResponseParser);
     }
 }

@@ -10,7 +10,6 @@ import com.example.paymentclient.payu.PayUResponseParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -35,7 +34,7 @@ public class PayUClientTests {
     @BeforeEach
     public void setup() {
         payUClient =
-                new PayUClient(tokenCache, payUHttpClient, CLIENT_ID, SECRET, payUResponseParser);
+                new PayUClient(tokenCache, payUHttpClient, CLIENT_ID, SECRET, CLIENT_ID, payUResponseParser);
     }
 
     @Test
