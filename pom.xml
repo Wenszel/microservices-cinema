@@ -21,6 +21,7 @@
         <module>gateway</module>
         <module>reservation</module>
         <module>payment</module>
+        <module>mail</module>
     </modules>
 
     <properties>
